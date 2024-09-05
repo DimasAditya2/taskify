@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+
+# Output directories
+dist/
+build/
+
+# Logs
+npm-debug.log*
+yarn-error.log*
+
+# Environment
+.env*
+
+# Coverage directory
+coverage/
+
+# IDE/Editor specific
+.vscode/
+.idea/
+*.swp
+
+#misc
+DS_STORE
+.package-lock.json
+
+#other
+setup.md
+note.md
