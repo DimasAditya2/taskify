@@ -1,5 +1,12 @@
 # Task Management API Documentation
 
+Taskify Server adalah backend API yang menyediakan fitur manajemen tugas sederhana, memungkinkan pengguna untuk membuat, membaca, memperbarui, dan menghapus tugas. Server ini dibangun menggunakan Node.js dan Express serta terintegrasi dengan MongoDB sebagai database untuk penyimpanan data.
+
+Taskify Server is an API backend that provides simple task management features, allowing users to create, read, update, and delete tasks. This server was built using Node.js and Express and integrated with MongoDB as a database for data storage
+
+## Deployment
+[coming son](https://google.com)
+
 ## Endpoints
 
 1. GET /tasks
@@ -11,7 +18,7 @@
 
 ### 1. GET /tasks
    Descripton:
-   Mendapatkan Semua task yang ada
+   get all products from db
 
 Request:
 
@@ -26,8 +33,8 @@ Response:
 ```json
 [
   {
-    "_id": "64e2f8bcf5a6f7b58d123456",
-    "title": "Belajar Node.js",
+    "_id": "string",
+    "title": "string",
     "description": "string",
     "completed": "boolean",
     "createdAt": "Date"
@@ -44,7 +51,7 @@ Response:
 
 ### 2. POST /tasks
    Description:
-   Menambahkan task baru ke dalam sistem
+   Adding new tasks to the DB
 
 Request:
 
@@ -54,8 +61,8 @@ Request:
 
 ```json
 {
-  "title": "Belajar Node.js",
-  "description": "Pelajari dasar-dasar Node.js"
+  "title": "string",
+  "description": "string"
 }
 ```
 
@@ -74,16 +81,16 @@ Response:
 }
 ```
 
-### 3. PUT /tasks
+### 3. PUT /tasks/:id
    Description:
-   Memperbarui task yang ada berdasarkan ID
+   Update existing tasks based on ID
 
 Request:
 
 - Method: PUT
 - URL: /tasks/:id
   - Parameter
-    - id: ID dari task yang akan diupdate
+    - id: ID of the task to be updated
 - Body(JSON)
 
 ```json
@@ -109,16 +116,16 @@ Response:
 }
 ```
 
-### 4. DELETE /tasks
+### 4. DELETE /tasks/:id
    Description:
-   Menghapus task berdasarkan ID
+   Delete tasks based on ID
 
 Request:
 
 - Method: DELETE
 - URL: /tasks/:id
   - Parameter
-    - id: ID dari task yang akan diupdate
+    - id: ID of the task to be deleted
 
 Response:
 
@@ -140,7 +147,7 @@ Response:
 ## Error Response
 
 1. 400 Bad Request
-   Jika ada kesalahan validasi atau input yang tidak sesuai, server akan mengembalikan:
+   If there are validation errors or inappropriate input, the server will return:
 
 ```json
 {
@@ -149,7 +156,7 @@ Response:
 ```
 
 2. 404 Not Found
-   Jika task dengan ID tertentu tidak ditemukan, server akan mengembalikan:
+   If a task with the specified ID is not found, the server will return:
 
 ```json
 {
@@ -158,7 +165,7 @@ Response:
 ```
 
 3. 500 Internal Server Error
-   Jika terjadi kesalahan di server, server akan mengembalikan:
+   If an error occurs on the server, the server will return:
 
 ```json
 {
