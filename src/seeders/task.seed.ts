@@ -1,9 +1,11 @@
 import mongoose from 'mongoose'
 import { logger } from '../utils/logger'
 import config from '../config/environment'
+import { v4 as uuidv4 } from 'uuid'
 
 const taskSchema = new mongoose.Schema(
   {
+    task_id: { type: String, required: true },
     title: { type: String, required: true },
     description: { type: String, required: true },
     statis: { type: String, require: true },
@@ -17,6 +19,7 @@ const Task = mongoose.model('Tasks', taskSchema)
 
 const tasks = [
   {
+    task_id: uuidv4(),
     title: 'Complete project documentation',
     description: 'Write API docs and set up usage examples',
     status: 'progress',
@@ -24,6 +27,7 @@ const tasks = [
     priority: 'high'
   },
   {
+    task_id: uuidv4(),
     title: 'Fix bug in authentication system',
     description: 'Investigate the bug in login flow and fix it',
     status: 'pending',
@@ -31,6 +35,7 @@ const tasks = [
     priority: 'medium'
   },
   {
+    task_id: uuidv4(),
     title: 'Design landing page',
     description: 'Create wireframes and prototypes for the landing page',
     status: 'completed',

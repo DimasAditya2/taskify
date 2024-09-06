@@ -82,14 +82,14 @@ Response:
 }
 ```
 
-### 3. PUT /tasks/:id
+### 3. GET /tasks/:id
 
 Description:
 Get Task By ID
 
 Request:
 
-- Method: PUT
+- Method: GET
 - URL: /tasks/:id
   - Parameter
     - id: ID of the task to be updated
@@ -215,10 +215,9 @@ Response:
 
 ## Stack
 <div style="display: flex; flex-direction: row; justify-content: space-evenly;">
-<img src="assets/typescript.png" alt="TypeScript Logo" width="64" height="64">
-<img src="assets/mongodb1.png" alt="TypeScript Logo" width="64" height="64">
-<img src="assets/nodejs.png" alt="TypeScript Logo" width="64" height="64">
+<img src="assets/typescript.png" width="64" height="64">
+<img src="assets/mongodb1.png" width="64" height="64">
+<img src="assets/nodejs.png" width="64" height="64">
 </div>
-
 
 

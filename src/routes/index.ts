@@ -11,4 +11,3 @@ export const routes = (app: Application) => {
     app.use(url, router)
   })
 }
-

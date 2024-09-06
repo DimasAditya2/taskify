@@ -17,7 +17,7 @@ export const getTaskById = async (id: string) => {
     const data = await taskModel.findById(id)
     return data
   } catch (error) {
-    logger.info('Error cannot get all data', error)
+    logger.info('Error cannot get data by id', error)
     throw error
   }
 }
@@ -35,6 +35,19 @@ export const createTask = async (payload: TaskType) => {
 export const deleteTask = async (task_id: string | number) => {
   try {
     const data = await taskModel.findOneAndDelete({ task_id: String(task_id) })
+    return data
+  } catch (error) {
+    logger.info('Error Create Task', error)
+    throw error
+  }
+}
+
+
+export const updateTask = async (task_id: string | number, payload: TaskType) => {
+  try {
+    const data = await taskModel.findOneAndUpdate({task_id}, {
+      $set: payload
+    })
     return data
   } catch (error) {
     logger.info('Error Create Task', error)
