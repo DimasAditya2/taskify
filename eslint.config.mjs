@@ -22,7 +22,8 @@ export default [
       'require-yield': 'off',
       // ! tidak direkomendasikan karena bisa menyebabkan pengabaian terkait variabel yang tidak terdefinisi
       // ! sementara untuk menghilangkan error di unit testing jest
-      "no-undef": "off" 
+      "no-undef": "off" ,
+      "no-sparse-arrays": "off"
     }
   }
 ]

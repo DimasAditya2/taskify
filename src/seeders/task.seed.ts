@@ -1,6 +1,19 @@
 import mongoose from 'mongoose'
-import { taskModel } from '../models/task.model'
 import { logger } from '../utils/logger'
+import config from '../config/environment'
+
+const taskSchema = new mongoose.Schema(
+  {
+    title: { type: String, required: true },
+    description: { type: String, required: true },
+    statis: { type: String, require: true },
+    dueDate: { type: Date, require: true },
+    priority: { type: String, required: true }
+  },
+  { timestamps: true }
+)
+
+const Task = mongoose.model('Tasks', taskSchema)
 
 const tasks = [
   {
@@ -28,20 +41,19 @@ const tasks = [
 
 async function seedData() {
   try {
-    await mongoose.connect(
-      'mongodb+srv://dimasdev:qRkvcH1fIywkHAAc@cluster0.qcura.mongodb.net/taskify?retryWrites=true&w=majority&appName=Cluster0'
-    )
+    await mongoose.connect(`${config.db}`)
     logger.info('Connected to MongoDB')
 
-    await taskModel.deleteMany({})
+    await Task.deleteMany({})
 
-    await taskModel.insertMany(tasks)
+    await Task.insertMany(tasks)
 
     logger.info('Success Seeder data')
     mongoose.connection.close()
   } catch (error) {
     console.log(error)
     logger.info('failed seed data:', error)
+    mongoose.connection.close()
   }
 }
 

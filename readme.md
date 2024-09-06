@@ -5,6 +5,7 @@ Taskify Server adalah backend API yang menyediakan fitur manajemen tugas sederha
 Taskify Server is an API backend that provides simple task management features, allowing users to create, read, update, and delete tasks. This server was built using Node.js and Express and integrated with MongoDB as a database for data storage
 
 ## Deployment
+
 [coming son](https://google.com)
 
 ## Endpoints
@@ -17,8 +18,9 @@ Taskify Server is an API backend that provides simple task management features, 
 <hr>
 
 ### 1. GET /tasks
-   Descripton:
-   get all products from db
+
+Descripton:
+get all products from db
 
 Request:
 
@@ -31,27 +33,30 @@ Response:
 - Body
 
 ```json
-[
-  {
-    "_id": "string",
-    "title": "string",
-    "description": "string",
-    "completed": "boolean",
-    "createdAt": "Date"
-  },
-  {
-    "_id": "string",
-    "title": "string",
-    "description": "string",
-    "completed": "boolean",
-    "createdAt": "Date"
-  }
-]
+{
+  "status": true,
+  "statusCode": 200,
+  "message": "SUCCESS GET ALL DATA",
+  "data": [
+    {
+      "status": "string",
+      "_id": "string",
+      "title": "string",
+      "description": "string",
+      "dueDate": "Date",
+      "priority": "string",
+      "__v": 0,
+      "createdAt": "Date",
+      "updatedAt": "Date"
+    }
+  ]
+}
 ```
 
 ### 2. POST /tasks
-   Description:
-   Adding new tasks to the DB
+
+Description:
+Adding new tasks to the DB
 
 Request:
 
@@ -73,17 +78,16 @@ Response:
 
 ```json
 {
-  "_id": "string",
-  "title": "string",
-  "description": "string",
-  "completed": "boolean",
-  "createdAt": "Date"
+  "status": true,
+  "statusCode": 201,
+  "message": "SUCCESS CREATE TASKS"
 }
 ```
 
 ### 3. PUT /tasks/:id
-   Description:
-   Update existing tasks based on ID
+
+Description:
+Update existing tasks based on ID
 
 Request:
 
@@ -117,8 +121,9 @@ Response:
 ```
 
 ### 4. DELETE /tasks/:id
-   Description:
-   Delete tasks based on ID
+
+Description:
+Delete tasks based on ID
 
 Request:
 
@@ -146,12 +151,14 @@ Response:
 
 ## Error Response
 
-1. 400 Bad Request
+1. 422 Unprocessable Entity
    If there are validation errors or inappropriate input, the server will return:
 
 ```json
 {
-  "message": "Invalid request"
+    "status": false,
+    "statusCode": 422,
+    "message": "Unprocessable Entity"
 }
 ```
 

@@ -21,7 +21,7 @@ const taskSchema = new mongoose.Schema({
         enum: ['low', 'medium', 'high'],
         default: 'low',
     }
-})
+}, {timestamps: true})
 
 export const taskModel = mongoose.model('Task', taskSchema)
 
