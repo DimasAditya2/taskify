@@ -31,3 +31,13 @@ export const createTask = async (payload: TaskType) => {
     throw error
   }
 }
+
+export const deleteTask = async (task_id: string | number) => {
+  try {
+    const data = await taskModel.findOneAndDelete({ task_id: String(task_id) })
+    return data
+  } catch (error) {
+    logger.info('Error Create Task', error)
+    throw error
+  }
+}
