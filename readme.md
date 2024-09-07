@@ -176,6 +176,37 @@ Response:
 }
 ```
 
+### 7. POST /auth/login
+
+Descripton: Authenticate a user and return a JWT token.
+
+Request:
+
+- Method: POST
+- URL: /auth/login
+- Body (JSON):
+
+```json
+{
+  "email": "string",
+  "password": "string"
+}
+```
+
+Response:
+
+- Status: `200 OK`
+- Body:
+
+```json
+{
+  "status": true,
+  "statusCode": 200,
+  "message": "Login successful",
+  "access_token": "string"
+}
+```
+
 &nbsp;
 
 <hr>
@@ -204,7 +235,7 @@ Response:
 }
 ```
 
-3. 50 Internal Server Error
+3. 500 Internal Server Error
    If an error occurs on the server, the server will return:
 
 ```json
@@ -213,12 +244,31 @@ Response:
 }
 ```
 
-## Stack
+4. 409 Conflict If a conflict occurs, such as when the same data already exists (e.g., registering with an already registered email), the server will return:
+
+```json
+{
+  "status": false,
+  "statusCode": 409,
+  "message": "Conflict: Resource already exists"
+}
+```
+
+5. 401 Unauthorized If the request is not properly authenticated or the token is invalid, the server will return:
+
+```json
+{
+  "status": false,
+  "statusCode": 401,
+  "message": "Unauthorized: Invalid credentials or token"
+}
+```
+
+## Tech Stack
+
 <div style="display: flex; flex-direction: row; justify-content: space-between;">
 <img src="assets/typescript.png" width="64" height="64">
 <img src="assets/mongodb1.png" width="64" height="64">
 <img src="assets/nodejs.png" width="64" height="64">
 <img src="assets/express.png" width="64" height="64">
 </div>
-
-

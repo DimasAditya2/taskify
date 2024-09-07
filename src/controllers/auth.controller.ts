@@ -32,9 +32,17 @@ export const createUser = async (req: Request, res: Response) => {
             message: 'Success Register User'
         })
 
-    } catch (error) {
+    } catch (error: any) {
+        if (error.message === 'Email already exists') {
+            logger.info('Error: 409 Conflict - Email already exists')
+            return res.status(409).send({
+                status: false,
+                statusCode: 409,
+                message: 'Email already exists'
+            })
+        }
+
         logger.info('Error register user:', error)
-        console.log(error)
         return res.status(500).send({
             status: false,
             statusCode: 500,
@@ -58,15 +66,15 @@ export const loginUser = async (req: Request, res: Response) => {
 
         const user  = await findUserByEmail(value.email)
 
-        if(!user) return res.status(404).send({status: false, statusCode: 404, message: 'User Not Found'})
+        if(!user) return res.status(401).send({status: false, statusCode: 401, message: 'Invalid email or password'})
 
         const isValidPassword = checkPassword(value.password, user.password)
 
-        if(!isValidPassword) return res.status(401).send({status: false, statusCode: 401, message: 'Invalid email/password'})
+        if(!isValidPassword) return res.status(401).send({status: false, statusCode: 401, message: 'Invalid email or password'})
 
         const access_token = signToken({...user}, {expiresIn: '1h'})
 
-        res.status(200).json({status: true, statusCode: 200, message: 'Succes Login', access_token})
+        res.status(200).json({status: true, statusCode: 200, message: 'Login successful', access_token})
 
     } catch (error) {
         logger.info('Error Login', error)

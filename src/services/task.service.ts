@@ -12,9 +12,9 @@ export const getTasks = async (user_id: string) => {
   }
 }
 
-export const getTaskById = async (id: string) => {
+export const getTaskById = async (id: string, user_id: string) => {
   try {
-    const data = await taskModel.findById(id)
+    const data = await taskModel.findOne({_id: id, user_id})
     return data
   } catch (error) {
     logger.info('Error cannot get data by id', error)

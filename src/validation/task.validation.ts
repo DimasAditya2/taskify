@@ -3,6 +3,7 @@ import { TaskType } from 'src/types/task.type'
 
 export const taskValidation = (payload: TaskType) => {
   const schema = Joi.object({
+    user_id: Joi.string().required(),
     task_id: Joi.string().required(),
     title: Joi.string().required(),
     description: Joi.string().allow('', null),

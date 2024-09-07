@@ -7,10 +7,10 @@ import { v4 as uuidv4 } from 'uuid'
 export const getAllTasks = async (req: Request, res: Response) => {
   try {
     const { id } = req.params
-    const userId = res.locals.user._doc.user_id
+    const user_id = res.locals.user._doc.user_id
 
     if (id) {
-      const task = await getTaskById(id)
+      const task = await getTaskById(id, user_id)
 
       if (!task) {
         return res.status(404).send({
@@ -28,7 +28,7 @@ export const getAllTasks = async (req: Request, res: Response) => {
       })
     }
 
-    const tasks = await getTasks(userId)
+    const tasks = await getTasks(user_id)
 
     return res.status(200).json({
       status: true,
@@ -49,6 +49,7 @@ export const getAllTasks = async (req: Request, res: Response) => {
 export const postTask = async (req: Request, res: Response) => {
   try {
     req.body.task_id = uuidv4()
+    req.body.user_id = res.locals.user._doc.user_id
     const { error, value } = taskValidation(req.body)
 
     if (error) {
