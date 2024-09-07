@@ -204,7 +204,7 @@ Response:
 }
 ```
 
-3. 640 Internal Server Error
+3. 50 Internal Server Error
    If an error occurs on the server, the server will return:
 
 ```json

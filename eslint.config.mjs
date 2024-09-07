@@ -23,7 +23,8 @@ export default [
       // ! tidak direkomendasikan karena bisa menyebabkan pengabaian terkait variabel yang tidak terdefinisi
       // ! sementara untuk menghilangkan error di unit testing jest
       'no-undef': 'off',
-      'no-sparse-arrays': 'off'
+      'no-sparse-arrays': 'off',
+      "@typescript-eslint/no-unused-vars": "off"
     }
   }
 ]
