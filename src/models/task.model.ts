@@ -2,6 +2,9 @@ import mongoose from 'mongoose'
 
 const taskSchema = new mongoose.Schema(
   {
+    user_id: {
+      type: String,
+    },
     task_id: {
       type: String,
     },

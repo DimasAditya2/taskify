@@ -214,10 +214,11 @@ Response:
 ```
 
 ## Stack
-<div style="display: flex; flex-direction: row; justify-content: space-evenly;">
+<div style="display: flex; flex-direction: row; justify-content: space-between;">
 <img src="assets/typescript.png" width="64" height="64">
 <img src="assets/mongodb1.png" width="64" height="64">
 <img src="assets/nodejs.png" width="64" height="64">
+<img src="assets/express.png" width="64" height="64">
 </div>
 
 

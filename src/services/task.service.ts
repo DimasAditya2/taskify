@@ -2,9 +2,9 @@ import { TaskType } from 'src/types/task.type'
 import { taskModel } from '../models/task.model'
 import { logger } from '../utils/logger'
 
-export const getTasks = async () => {
+export const getTasks = async (user_id: string) => {
   try {
-    const data = await taskModel.find()
+    const data = await taskModel.find({user_id})
     return data
   } catch (error) {
     logger.info('Error cannot get all data', error)

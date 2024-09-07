@@ -7,6 +7,7 @@ import { checkPassword, hashPassword } from "../utils/hashing";
 import { signToken } from "../utils/jwt";
 // import UserType from "../types/auth.type";
 
+
 export const createUser = async (req: Request, res: Response) => {
     try {
         req.body.user_id = uuidv4()

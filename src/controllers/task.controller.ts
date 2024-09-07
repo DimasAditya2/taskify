@@ -7,6 +7,7 @@ import { v4 as uuidv4 } from 'uuid'
 export const getAllTasks = async (req: Request, res: Response) => {
   try {
     const { id } = req.params
+    const userId = res.locals.user._doc.user_id
 
     if (id) {
       const task = await getTaskById(id)
@@ -27,7 +28,7 @@ export const getAllTasks = async (req: Request, res: Response) => {
       })
     }
 
-    const tasks = await getTasks()
+    const tasks = await getTasks(userId)
 
     return res.status(200).json({
       status: true,
@@ -97,7 +98,7 @@ export const updateTaskById = async (req: Request, res: Response) => {
   try {
     const { id } = req.params
     const { error, value } = updateTaskValidation(req.body)
-    
+
     if (error) {
       logger.info('Unprocessable Entity:', error.details[0].message)
       return res.status(422).json({
@@ -123,4 +124,3 @@ export const updateTaskById = async (req: Request, res: Response) => {
     })
   }
 }
-
