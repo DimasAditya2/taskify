@@ -6,13 +6,11 @@ const deserializedToken = async (req: Request, res: Response, next: NextFunction
   const accessToken = req.headers.authorization?.replace(/^Bearer\s/, '')
 
   if (!accessToken) {
-    logger.info('No Access Token')
     return next()
   }
 
   const token: any = verifyToken(accessToken)
   if (token.decoded) {
-    logger.info('Have Token')
     res.locals.user = token.decoded
     return next()
   }

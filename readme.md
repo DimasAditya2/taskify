@@ -6,7 +6,7 @@ Taskify Server is an API backend that provides simple task management features, 
 
 ## Deployment
 
-[coming son](https://google.com)
+[Link Deploy](https://taskify-server-sage.vercel.app/test)
 
 ## Endpoints
 
@@ -112,8 +112,8 @@ Response:
     "dueDate": "2025-09-15T00:00:00.000Z",
     "priority": "high",
     "__v": 0,
-    "createdAt": "2025-09-06T19:59:06.652Z",
-    "updatedAt": "2025-09-06T19:59:06.652Z"
+    "createdAt": "2020-09-06T19:59:06.652Z",
+    "updatedAt": "2020-09-06T19:59:06.652Z"
   }
 }
 ```
@@ -173,6 +173,37 @@ Response:
 ```json
 {
   "message": "Task deleted"
+}
+```
+
+### 6. POST /auth/register
+
+Description: Register a new user.
+
+Request:
+
+Method: POST
+URL: /auth/register
+Body (JSON):
+
+```json
+{
+  "name": "string",
+  "email": "string",
+  "password": "string"
+}
+```
+
+Response:
+
+Status: 201 Created
+Body:
+
+```json
+{
+    "status": true,
+    "statusCode": 201,
+    "message": "Success Register User"
 }
 ```
 
