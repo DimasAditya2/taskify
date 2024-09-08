@@ -4,7 +4,7 @@ import { taskModel } from '../models/task.model'
 export const authentication = (req: Request, res: Response, next: NextFunction) => {
   const user = res.locals.user
 
-  if (!user) return res.sendStatus(403)
+  if (!user) return res.sendStatus(403).send({status: 401, statusCode: 401, message: `Forbidden: You are not allowed to access, please log in first`})
 
   return next()
 }
