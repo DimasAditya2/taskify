@@ -1,8 +1,8 @@
 # Task Management API Documentation
 
-Taskify Server adalah backend API yang menyediakan fitur manajemen tugas sederhana, memungkinkan pengguna untuk membuat, membaca, memperbarui, dan menghapus tugas. Server ini dibangun menggunakan Node.js dan Express serta terintegrasi dengan MongoDB sebagai database untuk penyimpanan data.
+Taskify Server adalah backend API yang menyediakan fitur manajemen tugas sederhana, memungkinkan pengguna untuk membuat, membaca, memperbarui, dan menghapus tugas. Pengguna harus terdaftar dan masuk menggunakan token JWT untuk mengakses tugas mereka. Setiap tugas hanya bisa diakses dan dimodifikasi oleh pengguna yang membuatnya.
 
-Taskify Server is an API backend that provides simple task management features, allowing users to create, read, update, and delete tasks. This server was built using Node.js and Express and integrated with MongoDB as a database for data storage
+Server ini dibangun menggunakan Node.js dan Express serta terintegrasi dengan MongoDB sebagai database untuk penyimpanan data.
 
 ## Deployment
 
@@ -14,6 +14,8 @@ Taskify Server is an API backend that provides simple task management features, 
 2. POST /tasks
 3. PUT /tasks
 4. DELETE /tasks
+5. POST /auth/register
+6. POST /auth/login
 
 <hr>
 
@@ -26,6 +28,8 @@ Request:
 
 - Method: Get
 - URL: /tasks
+- Header:
+  - Authorization: Bearer <token>
 
 Response:
 
@@ -61,6 +65,8 @@ Request:
 
 - Method: POST
 - URL: /tasks
+- Header:
+  - Authorization: Bearer <token>
 - Body(JSON):
 
 ```json
@@ -93,6 +99,8 @@ Request:
 - URL: /tasks/:id
   - Parameter
     - id: ID of the task to be updated
+- Header:
+  - Authorization: Bearer <token>
 
 Response:
 
@@ -121,14 +129,16 @@ Response:
 ### 4. PUT /tasks/:id
 
 Description:
-Update existing tasks based on ID
+Update existing tasks based on TASK_ID
 
 Request:
 
 - Method: PUT
-- URL: /tasks/:id
+- URL: /tasks/:TASK_ID
   - Parameter
     - id: ID of the task to be updated
+- Header:
+  - Authorization: Bearer <token>
 - Body(JSON)
 
 ```json
@@ -146,23 +156,21 @@ Response:
 
 ```json
 {
-  "_id": "string",
-  "title": "string",
-  "description": "string",
-  "completed": "boolean",
-  "createdAt": "Date"
+    "status": true,
+    "statusCode": 200,
+    "message": "SUCCESS UPDATE TASKS"
 }
 ```
 
 ### 5. DELETE /tasks/:id
 
 Description:
-Delete tasks based on ID
+Delete tasks based on TASK_ID
 
 Request:
 
 - Method: DELETE
-- URL: /tasks/:id
+- URL: /tasks/:task_id
   - Parameter
     - id: ID of the task to be deleted
 
