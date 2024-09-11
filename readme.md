@@ -12,10 +12,11 @@ Server ini dibangun menggunakan Node.js dan Express serta terintegrasi dengan Mo
 
 1. GET /tasks
 2. POST /tasks
-3. PUT /tasks
-4. DELETE /tasks
-5. POST /auth/register
-6. POST /auth/login
+3. GET /tasks/:id
+4. PUT /tasks
+5. DELETE /tasks
+6. POST /auth/register
+7. POST /auth/login
 
 <hr>
 
@@ -170,6 +171,8 @@ Delete tasks based on TASK_ID
 Request:
 
 - Method: DELETE
+- Header:
+  - Authorization: Bearer <token>
 - URL: /tasks/:task_id
   - Parameter
     - id: ID of the task to be deleted
@@ -180,7 +183,9 @@ Response:
 
 ```json
 {
-  "message": "Task deleted"
+    "status": true,
+    "statusCode": 200,
+    "message": "SUCCESS DELETE TASKS"
 }
 ```
 
