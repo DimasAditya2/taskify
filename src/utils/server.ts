@@ -14,7 +14,9 @@ const createServer = () => {
   app.use(bodyParser.json())
 
   // cors acces handler
-  app.use(cors())
+  app.use(cors({
+    origin: 'http://localhost:5173'
+  }))
   app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*')
     res.setHeader('Access-Control-Allow-Methods', '*')
