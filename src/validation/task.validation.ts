@@ -18,7 +18,7 @@ export const taskValidation = (payload: TaskType) => {
 export const updateTaskValidation = (payload: TaskType) => {
   const schema = Joi.object({
     task_id: Joi.string(),
-    title: Joi.string().required(),
+    title: Joi.string(),
     description: Joi.string().allow('', null),
     status: Joi.string().allow('', null),
     dueDate: Joi.string().allow('', null),
