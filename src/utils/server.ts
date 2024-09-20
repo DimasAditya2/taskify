@@ -15,7 +15,7 @@ const createServer = () => {
 
   // cors acces handler
   app.use(cors({
-    origin: 'http://localhost:5173'
+    origin: 'https://taskify-blond-sigma.vercel.app/'
   }))
   app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*')
